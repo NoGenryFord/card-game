@@ -15,30 +15,49 @@ fetch(templatesStorage)
     console.error("Error on coppy tempates", error);
   });
 // End Loading templates
-const allTypesOfCards = ["#cardWarrior", "#cardArcher", "#cardWizard"];
+const allTypesOfCards = [
+  { name: "#cardWarrior", id: 1, weight: 1 },
+  { name: "#cardArcher", id: 2, weight: 1 },
+  { name: "#cardWizard", id: 3, weight: 1 },
+];
 const MAX_CARD = 6;
 const cardsPlayer = [];
 const spawnBtn = document.getElementById("spawnButton");
 
-// Flags
+// 1 card have 1 point base weight. If in array 3 card => sunWeight = 3 , if in array 5 card => sunWeight = 5...
+const totalWeightBase = allTypesOfCards.length;
 
-const changeCard = () => {
-  for (let index = 0; index < allCards.length; index++) {
-    const element = allCards[index];
-    return element;
-  }
+const chooseRandomCard = () => {
+  //Count weight random
+
+  //   Watch all weights
+  const weightActual = allTypesOfCards.map((card) => card.weight);
+  console.log(weightActual);
+
+  //Minimaze weight choosed card
+  const randomIndex = Math.floor(Math.random() * allTypesOfCards.length);
+  // Decreas weight of choosed card
+  return allTypesOfCards[randomIndex];
 };
 
-let nextCardTypeIndex = 0;
-const chooseCardType = () => {
-  const selector = allTypesOfCards[nextCardTypeIndex];
-  nextCardTypeIndex = (nextCardTypeIndex + 1) % allTypesOfCards.length;
-  return selector;
+const updateCardWeight = (selectedCard) => {
+  const decreaseAmount = 1 / allTypesOfCards.length;
+
+  const otherCardCount = allTypesOfCards - 1;
+  const increaseAmount = decreaseAmount / otherCardCount;
+
+  allTypesOfCards.forEach((card) => {
+    if (card.id === selectedCard.id) {
+      card.weight = Math.max(0, card.weight - decreaseAmount);
+    } else {
+      card.weight += increaseAmount;
+    }
+  });
 };
 
 const spawnCard = () => {
-  const selector = chooseCardType();
-  const tmpl = tempatesContainer.querySelector(selector);
+  const selector = chooseRandomCard();
+  const tmpl = tempatesContainer.querySelector(selector.name);
   if (tmpl) {
     const clone = tmpl.cloneNode(true);
     const gameField = document.getElementById("gameField");
@@ -60,6 +79,7 @@ spawnBtn.addEventListener("click", () => {
     console.log("Max cards amount!");
     console.log("Flag status is: " + isCardLimit);
   } else if (!isCardLimit) {
+    const selectedCard = chooseRandomCard;
     spawnCard();
     cardsPlayer.push("Player card");
     if (cardsPlayer.length === MAX_CARD) isCardLimit = true;
@@ -67,5 +87,7 @@ spawnBtn.addEventListener("click", () => {
     console.log("Flag status is: " + isCardLimit);
     console.log("Add new card!");
     console.log("Array: " + cardsPlayer + " | Lenght: " + cardsPlayer.length);
+
+    updateCardWeight();
   }
 });
