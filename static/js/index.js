@@ -15,8 +15,8 @@ fetch(templatesStorage)
     console.error("Error on coppy tempates", error);
   });
 // End Loading templates
-const allCards = ["#cardWarrior", "#cardArcher", "#cardWizard"];
-const MAX_CARD = 3;
+const allTypesOfCards = ["#cardWarrior", "#cardArcher", "#cardWizard"];
+const MAX_CARD = 6;
 const cardsPlayer = [];
 const spawnBtn = document.getElementById("spawnButton");
 
@@ -29,8 +29,16 @@ const changeCard = () => {
   }
 };
 
+let nextCardTypeIndex = 0;
+const chooseCardType = () => {
+  const selector = allTypesOfCards[nextCardTypeIndex];
+  nextCardTypeIndex = (nextCardTypeIndex + 1) % allTypesOfCards.length;
+  return selector;
+};
+
 const spawnCard = () => {
-  const tmpl = tempatesContainer.querySelector("#cardWarrior");
+  const selector = chooseCardType();
+  const tmpl = tempatesContainer.querySelector(selector);
   if (tmpl) {
     const clone = tmpl.cloneNode(true);
     const gameField = document.getElementById("gameField");
@@ -54,7 +62,7 @@ spawnBtn.addEventListener("click", () => {
   } else if (!isCardLimit) {
     spawnCard();
     cardsPlayer.push("Player card");
-    if (cardsPlayer.length === 3) isCardLimit = true;
+    if (cardsPlayer.length === MAX_CARD) isCardLimit = true;
 
     console.log("Flag status is: " + isCardLimit);
     console.log("Add new card!");

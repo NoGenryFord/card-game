@@ -11,6 +11,10 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
@@ -52,16 +56,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
   transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
 }
 .card_archer .card_archer__image {
-  height: 70%;
+  height: 65%;
   background-color: #f0f0f0;
   border-bottom: 2px solid #3e3e3e;
   background-image: url("/src/img/archer-card-avatar.png");
@@ -69,6 +74,13 @@
   border-top-right-radius: 15px;
   background-size: cover;
   overflow: hidden;
+}
+.card_archer .card_archer__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  color: #1d1d1d;
 }
 .card_archer:hover {
   -webkit-transform: translateY(-10px);
@@ -90,16 +102,17 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   -webkit-transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
   transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease;
   transition: transform 0.3s ease, cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, -webkit-transform 0.3s ease;
 }
 .card_wizard .card_wizard__image {
-  height: 70%;
+  height: 65%;
   background-color: #f0f0f0;
   border-bottom: 2px solid #3e3e3e;
   background-image: url("/src/img/wizzard-card-avatar.png");
@@ -107,6 +120,13 @@
   border-top-right-radius: 15px;
   background-size: cover;
   overflow: hidden;
+}
+.card_wizard .card_wizard__name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: center;
+  padding: 10px 0;
+  color: #1d1d1d;
 }
 .card_wizard:hover {
   -webkit-transform: translateY(-10px);
