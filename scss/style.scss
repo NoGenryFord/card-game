@@ -1,0 +1,43 @@
+// Basic Variables
+// Colors
+$primary-color: #007bff;
+$secondary-color: #0057b4;
+$text-primary-color: #1d1d1d;
+$background-color-dark: #4e4e4e;
+$background-color-dark-hover: #6e6e6e;
+$background-color-dark-border: #3e3e3e;
+$background-color-light: #f0f0f0;
+// Typography
+$font-family: "sans-serif", sans-serif;
+$font-size-base: 25px;
+$border-radius: 10px;
+$border-radius-big: 15px;
+
+@import "component";
+
+// Reset All Styles
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100vh;
+  font-family: "sans-serif", sans-serif;
+  font-size: 25px;
+  background-color: $background-color-light;
+}
+a,
+button,
+input {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: none;
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
