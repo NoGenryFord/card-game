@@ -50,7 +50,7 @@ const updateCardWeight = (selectedCard) => {
     if (card.id === selectedCard.id) {
       card.weight = Math.max(0, card.weight - decreaseAmount);
     } else {
-      card.weight += increaseAmount;
+      card.weight += +increaseAmount;
     }
   });
 };
@@ -88,6 +88,6 @@ spawnBtn.addEventListener("click", () => {
     console.log("Add new card!");
     console.log("Array: " + cardsPlayer + " | Lenght: " + cardsPlayer.length);
 
-    updateCardWeight();
+    updateCardWeight(selectedCard);
   }
 });
