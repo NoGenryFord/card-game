@@ -213,8 +213,6 @@
   display: flex;
   gap: 20px;
   flex-wrap: nowrap;
-  overflow-y: hidden;
-  overflow-x: auto;
 
   scrollbar-width: none; // For Firefox
   &::-webkit-scrollbar {
@@ -222,12 +220,55 @@
   }
 
   position: relative;
-  align-items: last baseline;
-  justify-content: center;
-  scroll-behavior: smooth;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: stretch;
 
   // Template styles
   border: 3px solid $background-color-dark-border;
+
+  .player_field {
+    width: 100%;
+    height: 35%;
+
+    // Template styles
+    border: 2px solid $background-color-dark-border;
+    border-radius: $border-radius;
+    background-color: rgba(255, 255, 255, 0.3);
+    display: flex;
+    // End of template styles
+
+    display: flex;
+    gap: 20px;
+    flex-wrap: nowrap;
+    overflow-y: hidden;
+    overflow-x: visible;
+
+    scrollbar-width: none; // For Firefox
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    scroll-behavior: smooth;
+  }
+
+  .enemy_field {
+    width: 100%;
+    height: 35%;
+
+    // Template styles
+    border: 2px solid $background-color-dark-border;
+    border-radius: $border-radius;
+    background-color: rgba(233, 60, 60, 0.3);
+    // End of template styles
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .side_panel_right {

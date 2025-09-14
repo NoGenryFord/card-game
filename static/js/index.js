@@ -91,8 +91,8 @@ const spawnCard = (selector) => {
   const tmpl = tempatesContainer.querySelector(selector);
   if (tmpl) {
     const clone = tmpl.cloneNode(true);
-    const gameField = document.getElementById("gameField");
-    if (gameField) {
+    const cardField = document.getElementById("playerField");
+    if (cardField) {
       const selectedCard = allTypesOfCards.find(
         (card) => card.name === selector
       );
@@ -103,7 +103,7 @@ const spawnCard = (selector) => {
         const damageElement = clone.querySelector(".stats__attack__value");
         if (damageElement) damageElement.textContent = selectedCard.damage;
       }
-      gameField.appendChild(clone);
+      cardField.appendChild(clone);
     } else {
       console.error("Don't finded game field");
     }
