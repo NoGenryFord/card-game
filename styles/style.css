@@ -1,6 +1,6 @@
 .card_warrior {
-  width: 250px;
-  height: 350px;
+  width: 175px;
+  height: 245px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #4e4e4e;
@@ -44,8 +44,8 @@
 }
 
 .card_archer {
-  width: 250px;
-  height: 350px;
+  width: 175px;
+  height: 245px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #4e4e4e;
@@ -90,8 +90,8 @@
 }
 
 .card_wizard {
-  width: 250px;
-  height: 350px;
+  width: 175px;
+  height: 245px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #4e4e4e;
@@ -148,7 +148,7 @@
 }
 
 .nav_line {
-  height: 150px;
+  height: 100px;
   width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
