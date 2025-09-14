@@ -8,10 +8,18 @@
   </head>
   <body>
     <div class="root" id="root">
-      <nav class="nav_line">
-        <button class="debug_spawn_card" id="spawnButton">Spawn Button</button>
-      </nav>
-      <main class="game_field" id="gameField"></main>
+      <nav class="nav_line"></nav>
+      <div class="main_row">
+        <main class="game_field" id="gameField"></main>
+        <aside class="side_panel_right" id="sidePanelRight">
+          <button class="debug_spawn_card" id="spawnButton">
+            Spawn Button
+          </button>
+          <button class="debug_clear_field" id="clearButton">
+            Clear Field
+          </button>
+        </aside>
+      </div>
     </div>
     <script src="static/js/index.js"></script>
   </body>

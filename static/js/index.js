@@ -23,6 +23,7 @@ const allTypesOfCards = [
 const MAX_CARD = 6;
 const cardsPlayer = [];
 const spawnBtn = document.getElementById("spawnButton");
+const clearButton = document.getElementById("clearButton");
 
 // 1 card have 1 point base weight. If in array 3 card => sunWeight = 3 , if in array 5 card => sunWeight = 5...
 const totalWeightBase = allTypesOfCards.length;
@@ -80,6 +81,14 @@ const spawnCard = (selector) => {
   }
 };
 
+const clearField = () => {
+  const gameField = document.getElementById("gameField");
+  if (gameField) {
+    gameField.innerHTML = "";
+    cardsPlayer.length = 0;
+  }
+};
+
 const addCardsPlayer = () => {};
 
 let isCardLimit = false;
@@ -99,4 +108,11 @@ spawnBtn.addEventListener("click", () => {
   } else {
     console.log("Max card on field!");
   }
+
+  clearButton.addEventListener("click", () => {
+    clearField();
+    console.log(
+      "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
+    );
+  });
 });
