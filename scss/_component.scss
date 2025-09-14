@@ -9,7 +9,7 @@
   flex: 0 0 175px;
   border: 2px solid $background-color-dark-border;
   border-radius: $border-radius-big;
-  background-color: $background-color-dark;
+  background-color: $background-color-light;
 
   position: sticky;
   right: 0;
@@ -33,7 +33,15 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    padding: 10px 0;
+    padding: 0px;
+    color: $text-primary-color;
+  }
+
+  .card_warrior__stats {
+    font-size: $font-size-small;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
     color: $text-primary-color;
   }
 
@@ -56,7 +64,7 @@
   flex: 0 0 175px;
   border: 2px solid $background-color-dark-border;
   border-radius: $border-radius-big;
-  background-color: $background-color-dark;
+  background-color: $background-color-light;
 
   position: sticky;
   right: 0;
@@ -82,7 +90,15 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    padding: 10px 0;
+    padding: 0px;
+    color: $text-primary-color;
+  }
+
+  .card_archer__stats {
+    font-size: $font-size-small;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
     color: $text-primary-color;
   }
 
@@ -105,7 +121,7 @@
   flex: 0 0 175px;
   border: 2px solid $background-color-dark-border;
   border-radius: $border-radius-big;
-  background-color: $background-color-dark;
+  background-color: $background-color-light;
 
   position: sticky;
   right: 0;
@@ -131,7 +147,15 @@
     font-size: 1.2rem;
     font-weight: bold;
     text-align: center;
-    padding: 10px 0;
+    padding: 0px;
+    color: $text-primary-color;
+  }
+
+  .card_wizard__stats {
+    font-size: $font-size-small;
+    display: flex;
+    justify-content: space-around;
+    padding: 5px;
     color: $text-primary-color;
   }
 

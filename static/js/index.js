@@ -16,9 +16,30 @@ fetch(templatesStorage)
   });
 // End Loading templates
 const allTypesOfCards = [
-  { name: "#cardWarrior", id: 1, weightBase: 1, weight: 1 },
-  { name: "#cardArcher", id: 2, weightBase: 1, weight: 1 },
-  { name: "#cardWizard", id: 3, weightBase: 1, weight: 1 },
+  {
+    name: "#cardWarrior",
+    id: 1,
+    weightBase: 1,
+    weight: 1,
+    hp: 100,
+    damage: 25,
+  },
+  {
+    name: "#cardArcher",
+    id: 2,
+    weightBase: 1,
+    weight: 1,
+    hp: 80,
+    damage: 35,
+  },
+  {
+    name: "#cardWizard",
+    id: 3,
+    weightBase: 1,
+    weight: 1,
+    hp: 65,
+    damage: 45,
+  },
 ];
 const MAX_CARD = 6;
 const cardsPlayer = [];
@@ -72,6 +93,16 @@ const spawnCard = (selector) => {
     const clone = tmpl.cloneNode(true);
     const gameField = document.getElementById("gameField");
     if (gameField) {
+      const selectedCard = allTypesOfCards.find(
+        (card) => card.name === selector
+      );
+      if (selectedCard) {
+        const hpElement = clone.querySelector(".stats__health__value");
+        if (hpElement) hpElement.textContent = selectedCard.hp;
+
+        const damageElement = clone.querySelector(".stats__attack__value");
+        if (damageElement) damageElement.textContent = selectedCard.damage;
+      }
       gameField.appendChild(clone);
     } else {
       console.error("Don't finded game field");
@@ -108,11 +139,11 @@ spawnBtn.addEventListener("click", () => {
   } else {
     console.log("Max card on field!");
   }
+});
 
-  clearButton.addEventListener("click", () => {
-    clearField();
-    console.log(
-      "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
-    );
-  });
+clearButton.addEventListener("click", () => {
+  clearField();
+  console.log(
+    "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
+  );
 });

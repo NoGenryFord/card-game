@@ -1,3 +1,7 @@
+@font-face {
+  font-family: "NamuTypeface";
+  src: url(/src/fonts/namu-typeface/NAMU-1400.woff) format("woff"), url(/src/fonts/namu-typeface/NAMU-1400.ttf) format("truetype");
+}
 .card_warrior {
   width: 175px;
   height: 245px;
@@ -10,7 +14,7 @@
           flex: 0 0 175px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
-  background-color: #4e4e4e;
+  background-color: #f0f0f0;
   position: sticky;
   right: 0;
   left: 0;
@@ -36,7 +40,17 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  padding: 10px 0;
+  padding: 0px;
+  color: #1d1d1d;
+}
+.card_warrior .card_warrior__stats {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 5px;
   color: #1d1d1d;
 }
 .card_warrior:hover {
@@ -58,7 +72,7 @@
           flex: 0 0 175px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
-  background-color: #4e4e4e;
+  background-color: #f0f0f0;
   position: sticky;
   right: 0;
   left: 0;
@@ -85,7 +99,17 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  padding: 10px 0;
+  padding: 0px;
+  color: #1d1d1d;
+}
+.card_archer .card_archer__stats {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 5px;
   color: #1d1d1d;
 }
 .card_archer:hover {
@@ -107,7 +131,7 @@
           flex: 0 0 175px;
   border: 2px solid #3e3e3e;
   border-radius: 15px;
-  background-color: #4e4e4e;
+  background-color: #f0f0f0;
   position: sticky;
   right: 0;
   left: 0;
@@ -134,7 +158,17 @@
   font-size: 1.2rem;
   font-weight: bold;
   text-align: center;
-  padding: 10px 0;
+  padding: 0px;
+  color: #1d1d1d;
+}
+.card_wizard .card_wizard__stats {
+  font-size: 16px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 5px;
   color: #1d1d1d;
 }
 .card_wizard:hover {
@@ -266,8 +300,8 @@
 html,
 body {
   height: 100vh;
-  font-family: "sans-serif", sans-serif;
-  font-size: 25px;
+  font-family: "NamuTypeface", sans-serif;
+  font-size: 18px;
   background-color: #f0f0f0;
 }
 
