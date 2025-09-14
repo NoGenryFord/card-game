@@ -160,6 +160,9 @@
   height: 80px;
   width: 100%;
   padding: 10px 20px;
+  background-image: url("/src/img/nav-bar-1.png");
+  background-size: cover;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,6 +187,9 @@
   height: 100%;
   width: 75%;
   padding: 20px;
+  background-image: url("/src/img/game-field-var-1.png");
+  background-size: cover;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -192,18 +198,28 @@
       flex-wrap: nowrap;
   overflow-y: hidden;
   overflow-x: auto;
+  scrollbar-width: none;
   position: relative;
-  -webkit-box-align: start;
-      -ms-flex-align: start;
-          align-items: flex-start;
+  -webkit-box-align: last baseline;
+      -ms-flex-align: last baseline;
+          align-items: last baseline;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   scroll-behavior: smooth;
   border: 3px solid #3e3e3e;
+}
+.game_field::-webkit-scrollbar {
+  display: none;
 }
 
 .side_panel_right {
   height: 100%;
   width: 25%;
   padding: 10px 20px;
+  background-image: url("/src/img/side-bar-var-1.png");
+  background-size: cover;
+  overflow: hidden;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;

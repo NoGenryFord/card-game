@@ -156,6 +156,10 @@
   width: 100%;
   padding: 10px 20px;
 
+  background-image: #{url("/src/img/nav-bar-1.png")};
+  background-size: cover;
+  overflow: hidden;
+
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -178,14 +182,24 @@
   width: 75%;
   padding: 20px;
 
+  background-image: #{url("/src/img/game-field-var-1.png")};
+  background-size: cover;
+  overflow: hidden;
+
   display: flex;
   gap: 20px;
   flex-wrap: nowrap;
   overflow-y: hidden;
   overflow-x: auto;
 
+  scrollbar-width: none; // For Firefox
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   position: relative;
-  align-items: flex-start;
+  align-items: last baseline;
+  justify-content: center;
   scroll-behavior: smooth;
 
   // Template styles
@@ -196,6 +210,10 @@
   height: 100%;
   width: 25%;
   padding: 10px 20px;
+
+  background-image: #{url("/src/img/side-bar-var-1.png")};
+  background-size: cover;
+  overflow: hidden;
 
   display: flex;
   align-items: baseline;
