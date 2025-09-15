@@ -281,15 +281,16 @@
   overflow: hidden;
 
   display: flex;
-  align-items: baseline;
-  justify-content: space-around;
+  flex-direction: column;
+  gap: 10px;
 
   // Template styles
   border: 3px solid $background-color-dark-border;
 }
 
 .debug_spawn_card,
-.debug_clear_field {
+.debug_clear_player_field,
+.debug_clear_enemy_field {
   position: default;
   padding: 10px 20px;
   border-radius: $border-radius;

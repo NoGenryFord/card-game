@@ -302,16 +302,17 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: baseline;
-      -ms-flex-align: baseline;
-          align-items: baseline;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 10px;
   border: 3px solid #3e3e3e;
 }
 
 .debug_spawn_card,
-.debug_clear_field {
+.debug_clear_player_field,
+.debug_clear_enemy_field {
   position: default;
   padding: 10px 20px;
   border-radius: 10px;
@@ -324,13 +325,15 @@
   border: 2px solid #0057b4;
 }
 .debug_spawn_card:hover,
-.debug_clear_field:hover {
+.debug_clear_player_field:hover,
+.debug_clear_enemy_field:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   cursor: pointer;
 }
 .debug_spawn_card:active,
-.debug_clear_field:active {
+.debug_clear_player_field:active,
+.debug_clear_enemy_field:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }
