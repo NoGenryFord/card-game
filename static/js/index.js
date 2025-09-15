@@ -43,9 +43,12 @@ const allTypesOfCards = [
 ];
 const MAX_CARD = 6;
 const cardsPlayer = [];
+const cardsEnemy = [];
 const spawnBtn = document.getElementById("spawnButton");
 const clearPlayerButton = document.getElementById("clearPlayerButton");
 const clearEnemyButton = document.getElementById("clearEnemyButton");
+
+let currentTurn = "";
 
 // 1 card have 1 point base weight. If in array 3 card => sunWeight = 3 , if in array 5 card => sunWeight = 5...
 const totalWeightBase = allTypesOfCards.length;
@@ -88,7 +91,7 @@ const updateCardWeight = (selectedCard) => {
   );
 };
 
-const spawnCard = (selector) => {
+const spawnCardTo = (selector) => {
   const tmpl = tempatesContainer.querySelector(selector);
   if (tmpl) {
     const clone = tmpl.cloneNode(true);
@@ -137,7 +140,7 @@ console.log("Flag status is: " + isCardLimit);
 spawnBtn.addEventListener("click", () => {
   if (cardsPlayer.length < MAX_CARD) {
     const selectedCard = chooseRandomCard();
-    spawnCard(selectedCard.name);
+    spawnCardTo(selectedCard.name);
     updateCardWeight(selectedCard);
 
     cardsPlayer.push(`${selectedCard.name}`);
