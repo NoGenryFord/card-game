@@ -227,7 +227,8 @@
   // Template styles
   border: 3px solid $background-color-dark-border;
 
-  .player_field {
+  .player_field,
+  .enemy_field {
     width: 100%;
     height: 35%;
 
@@ -256,18 +257,11 @@
   }
 
   .enemy_field {
-    width: 100%;
-    height: 35%;
-
     // Template styles
     border: 2px solid $background-color-dark-border;
     border-radius: $border-radius;
     background-color: rgba(233, 60, 60, 0.3);
     // End of template styles
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 }
 
@@ -290,7 +284,8 @@
 
 .debug_spawn_card,
 .debug_clear_player_field,
-.debug_clear_enemy_field {
+.debug_clear_enemy_field,
+.debug_spawn_card_enemy {
   position: default;
   padding: 10px 20px;
   border-radius: $border-radius;
