@@ -247,7 +247,8 @@
 .game_field::-webkit-scrollbar {
   display: none;
 }
-.game_field .player_field {
+.game_field .player_field,
+.game_field .enemy_field {
   width: 100%;
   height: 35%;
   border: 2px solid #3e3e3e;
@@ -272,24 +273,14 @@
           justify-content: center;
   scroll-behavior: smooth;
 }
-.game_field .player_field::-webkit-scrollbar {
+.game_field .player_field::-webkit-scrollbar,
+.game_field .enemy_field::-webkit-scrollbar {
   display: none;
 }
 .game_field .enemy_field {
-  width: 100%;
-  height: 35%;
   border: 2px solid #3e3e3e;
   border-radius: 10px;
   background-color: rgba(233, 60, 60, 0.3);
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
 }
 
 .side_panel_right {
@@ -312,7 +303,8 @@
 
 .debug_spawn_card,
 .debug_clear_player_field,
-.debug_clear_enemy_field {
+.debug_clear_enemy_field,
+.debug_spawn_card_enemy {
   position: default;
   padding: 10px 20px;
   border-radius: 10px;
@@ -326,14 +318,16 @@
 }
 .debug_spawn_card:hover,
 .debug_clear_player_field:hover,
-.debug_clear_enemy_field:hover {
+.debug_clear_enemy_field:hover,
+.debug_spawn_card_enemy:hover {
   -webkit-transform: scale(1.05);
           transform: scale(1.05);
   cursor: pointer;
 }
 .debug_spawn_card:active,
 .debug_clear_player_field:active,
-.debug_clear_enemy_field:active {
+.debug_clear_enemy_field:active,
+.debug_spawn_card_enemy:active {
   -webkit-transform: scale(0.95);
           transform: scale(0.95);
 }

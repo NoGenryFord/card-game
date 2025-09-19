@@ -43,9 +43,13 @@ const allTypesOfCards = [
 ];
 const MAX_CARD = 6;
 const cardsPlayer = [];
+const cardsEnemy = [];
 const spawnBtn = document.getElementById("spawnButton");
+const spawnEnemyButton = document.getElementById("spawnEnemyButton");
 const clearPlayerButton = document.getElementById("clearPlayerButton");
 const clearEnemyButton = document.getElementById("clearEnemyButton");
+
+let currentTurn = "";
 
 // 1 card have 1 point base weight. If in array 3 card => sunWeight = 3 , if in array 5 card => sunWeight = 5...
 const totalWeightBase = allTypesOfCards.length;
@@ -88,23 +92,26 @@ const updateCardWeight = (selectedCard) => {
   );
 };
 
-const spawnCard = (selector) => {
+const spawnCardTo = (selector, targetId = "playerField") => {
   const tmpl = tempatesContainer.querySelector(selector);
   if (tmpl) {
-    const clone = tmpl.cloneNode(true);
-    const cardField = document.getElementById("playerField");
+    const fragment = tmpl.content
+      ? tmpl.content.cloneNode(true)
+      : tmpl.cloneNode(true);
+    const cardField = document.getElementById(targetId);
     if (cardField) {
       const selectedCard = allTypesOfCards.find(
         (card) => card.name === selector
       );
       if (selectedCard) {
-        const hpElement = clone.querySelector(".stats__health__value");
+        const hpElement = fragment.querySelector(".stats__health__value");
         if (hpElement) hpElement.textContent = selectedCard.hp;
 
-        const damageElement = clone.querySelector(".stats__attack__value");
+        const damageElement = fragment.querySelector(".stats__attack__value");
         if (damageElement) damageElement.textContent = selectedCard.damage;
       }
-      cardField.appendChild(clone);
+      cardField.appendChild(fragment);
+      return cardField.lastElementChild;
     } else {
       console.error("Don't finded game field");
     }
@@ -122,10 +129,10 @@ const clearPlayerField = () => {
 };
 
 const clearEnemyField = () => {
-  const cardField = document.getElementById("enemyField");
-  if (cardField) {
-    cardField.innerHTML = "";
-    cardsPlayer.length = 0;
+  const enemyField = document.getElementById("enemyField");
+  if (enemyField) {
+    enemyField.innerHTML = "";
+    cardsEnemy.length = 0;
   }
 };
 
@@ -134,25 +141,64 @@ const addCardsPlayer = () => {};
 let isCardLimit = false;
 console.log("Flag status is: " + isCardLimit);
 
-spawnBtn.addEventListener("click", () => {
-  if (cardsPlayer.length < MAX_CARD) {
-    const selectedCard = chooseRandomCard();
-    spawnCard(selectedCard.name);
-    updateCardWeight(selectedCard);
+if (spawnBtn) {
+  spawnBtn.addEventListener("click", () => {
+    if (cardsPlayer.length < MAX_CARD) {
+      const selectedCard = chooseRandomCard();
+      spawnCardTo(selectedCard.name, "playerField");
+      updateCardWeight(selectedCard);
 
-    cardsPlayer.push(`${selectedCard.name}`);
-    console.log("Added new card");
+      cardsPlayer.push(`${selectedCard.name}`);
+      console.log("Added new card");
+      console.log(
+        "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
+      );
+    } else {
+      console.log("Max card on field!");
+    }
+  });
+} else {
+  console.warn("spawnBtn not found in DOM");
+}
+
+if (spawnEnemyButton) {
+  spawnEnemyButton.addEventListener("click", () => {
+    if (cardsEnemy.length < MAX_CARD) {
+      const selectedCard = chooseRandomCard();
+      spawnCardTo(selectedCard.name, "enemyField");
+      updateCardWeight(selectedCard);
+
+      cardsEnemy.push(`${selectedCard.name}`);
+      console.log("Added new enemy card");
+      console.log(
+        "Array enemy card: " + cardsEnemy + " | Leght: " + cardsEnemy.length
+      );
+    } else {
+      console.log("Max enemy card on field!");
+    }
+  });
+} else {
+  console.warn("spawnEnemyButton not found in DOM");
+}
+
+if (clearPlayerButton) {
+  clearPlayerButton.addEventListener("click", () => {
+    clearPlayerField();
     console.log(
       "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
     );
-  } else {
-    console.log("Max card on field!");
-  }
-});
+  });
+} else {
+  console.warn("clearPlayerButton not found in DOM");
+}
 
-clearPlayerButton.addEventListener("click", () => {
-  clearPlayerField();
-  console.log(
-    "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
-  );
-});
+if (clearEnemyButton) {
+  clearEnemyButton.addEventListener("click", () => {
+    clearEnemyField();
+    console.log(
+      "Array enemy card: " + cardsEnemy + " | Leght: " + cardsEnemy.length
+    );
+  });
+} else {
+  console.warn("clearEnemyButton not found in DOM");
+}
