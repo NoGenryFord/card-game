@@ -23,6 +23,7 @@ const allTypesOfCards = [
     weight: 1,
     hp: 100,
     damage: 25,
+    isActive: false,
   },
   {
     name: "#cardArcher",
@@ -31,6 +32,7 @@ const allTypesOfCards = [
     weight: 1,
     hp: 80,
     damage: 35,
+    isActive: false,
   },
   {
     name: "#cardWizard",
@@ -39,6 +41,7 @@ const allTypesOfCards = [
     weight: 1,
     hp: 65,
     damage: 45,
+    isActive: false,
   },
 ];
 const MAX_CARD = 6;
@@ -136,8 +139,6 @@ const clearEnemyField = () => {
   }
 };
 
-const addCardsPlayer = () => {};
-
 let isCardLimit = false;
 console.log("Flag status is: " + isCardLimit);
 
@@ -202,3 +203,72 @@ if (clearEnemyButton) {
 } else {
   console.warn("clearEnemyButton not found in DOM");
 }
+
+// System select active card
+let selectedCardElement = null;
+
+function initCardSelection() {
+  const playerField = document.getElementById("playerField");
+  const enemyField = document.getElementById("enemyField");
+
+  // Handler for player field
+  if (playerField) {
+    playerField.addEventListener("click", handleCardClick);
+  }
+
+  // Handler for enemy field (optional)
+  if (enemyField) {
+    enemyField.addEventListener("click", handleCardClick);
+  }
+}
+
+function handleCardClick(event) {
+  // Find the closest card
+  const clickedCard = event.target.closest(
+    ".card_warrior, .card_archer, .card_wizard"
+  );
+
+  if (!clickedCard) {
+    // Click outside the card — remove selection
+    if (selectedCardElement) {
+      selectedCardElement.classList.remove("selected");
+      selectedCardElement = null;
+    }
+    return;
+  }
+  // If the click is on the already selected card — remove selection
+  if (selectedCardElement === clickedCard) {
+    clickedCard.classList.remove("selected");
+    selectedCardElement = null;
+    console.log("Card deselected");
+    return;
+  }
+
+  // Remove old selection
+  if (selectedCardElement) {
+    selectedCardElement.classList.remove("selected");
+  }
+
+  // Set new selection
+  selectedCardElement = clickedCard;
+  selectedCardElement.classList.add("selected");
+  console.log("Card selected:", selectedCardElement);
+}
+
+// Function to get the currently selected card
+function getSelectedCard() {
+  return selectedCardElement;
+}
+
+// Function to clear the selection
+function clearSelection() {
+  if (selectedCardElement) {
+    selectedCardElement.classList.remove("selected");
+    selectedCardElement = null;
+  }
+}
+
+// Ініціалізація після завантаження DOM
+document.addEventListener("DOMContentLoaded", () => {
+  initCardSelection();
+});

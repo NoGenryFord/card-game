@@ -178,6 +178,39 @@
   cursor: pointer;
 }
 
+.card_warrior.selected,
+.card_archer.selected,
+.card_wizard.selected {
+  -webkit-transform: translateY(-55px) scale(1.25) rotate(2deg);
+          transform: translateY(-55px) scale(1.25) rotate(2deg);
+  -webkit-box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #34bb12;
+  z-index: 10;
+  position: relative;
+}
+
+.enemy_field .card_warrior:hover,
+.enemy_field .card_archer:hover,
+.enemy_field .card_wizard:hover {
+  -webkit-transform: translateY(10px);
+          transform: translateY(10px);
+  background-color: #6e6e6e;
+  cursor: pointer;
+}
+
+.enemy_field .card_warrior.selected,
+.enemy_field .card_archer.selected,
+.enemy_field .card_wizard.selected {
+  -webkit-transform: translateY(55px) scale(1.25) rotate(-2deg);
+          transform: translateY(55px) scale(1.25) rotate(-2deg);
+  -webkit-box-shadow: 0 -12px 25px rgba(0, 0, 0, 0.3);
+          box-shadow: 0 -12px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #ff4444;
+  z-index: 10;
+  position: relative;
+}
+
 .root {
   height: 100%;
   width: 100%;
@@ -223,7 +256,8 @@
   padding: 20px;
   background-image: url("/src/img/game-field-var-1.png");
   background-size: cover;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -231,7 +265,6 @@
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
   scrollbar-width: none;
-  position: relative;
   -webkit-box-orient: vertical;
   -webkit-box-direction: reverse;
       -ms-flex-direction: column-reverse;
@@ -261,8 +294,8 @@
   gap: 20px;
   -ms-flex-wrap: nowrap;
       flex-wrap: nowrap;
-  overflow-y: hidden;
-  overflow-x: visible;
+  overflow: visible;
+  position: relative;
   scrollbar-width: none;
   position: relative;
   -webkit-box-align: center;
