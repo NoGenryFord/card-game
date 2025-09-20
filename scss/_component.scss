@@ -168,6 +168,38 @@
     cursor: pointer;
   }
 }
+
+// Selected card styles
+.card_warrior.selected,
+.card_archer.selected,
+.card_wizard.selected {
+  transform: translateY(-55px) scale(1.25) rotate(2deg);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #34bb12;
+  z-index: 10;
+  position: relative;
+}
+
+// Hover for enemy cards - move down
+.enemy_field .card_warrior:hover,
+.enemy_field .card_archer:hover,
+.enemy_field .card_wizard:hover {
+  transform: translateY(10px);
+  background-color: $background-color-dark-hover;
+  cursor: pointer;
+}
+
+// Selected enemy card styles - move down
+.enemy_field .card_warrior.selected,
+.enemy_field .card_archer.selected,
+.enemy_field .card_wizard.selected {
+  transform: translateY(55px) scale(1.25) rotate(-2deg);
+  box-shadow: 0 -12px 25px rgba(0, 0, 0, 0.3);
+  border: 3px solid #ff4444;
+  z-index: 10;
+  position: relative;
+}
+
 .root {
   height: 100%;
   width: 100%;
@@ -208,7 +240,8 @@
 
   background-image: #{url("/src/img/game-field-var-1.png")};
   background-size: cover;
-  overflow: hidden;
+  overflow: visible;
+  position: relative;
 
   display: flex;
   gap: 20px;
@@ -219,7 +252,6 @@
     display: none;
   }
 
-  position: relative;
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: stretch;
@@ -242,8 +274,9 @@
     display: flex;
     gap: 20px;
     flex-wrap: nowrap;
-    overflow-y: hidden;
-    overflow-x: visible;
+
+    overflow: visible;
+    position: relative;
 
     scrollbar-width: none; // For Firefox
     &::-webkit-scrollbar {
