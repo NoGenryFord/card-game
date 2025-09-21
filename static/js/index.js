@@ -1,6 +1,7 @@
 // *************************************************************************************
 // START Import module side JS files
 import { NextTurn } from "./turnSystem.js";
+import bgMusic from "./musicPlayer.js";
 // END Import module side JS files
 // *************************************************************************************
 

@@ -10,12 +10,14 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
+  gap: 20px;
 
   // Template styles
   border: 3px solid $background-color-dark-border;
 }
 
-.turn_display {
+.turn_display,
+.music_status {
   color: $text-secondary-color;
   width: 100%;
   display: flex;
@@ -29,6 +31,9 @@
   background-color: rgba(0, 0, 0, 0.548);
   // End of template styles
 }
+.music_status {
+  width: 10vw;
+}
 
 .counter_turn {
   color: $text-secondary-color;
@@ -40,7 +45,8 @@
 
 .btn_next_turn,
 .btn_add_coins,
-.btn_remove_coins {
+.btn_remove_coins,
+.set-music {
   cursor: pointer;
   border-radius: $border-radius;
   padding: 10px 15px;
