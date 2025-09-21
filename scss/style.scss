@@ -10,6 +10,7 @@
 $primary-color: #007bff;
 $secondary-color: #0057b4;
 $text-primary-color: #1d1d1d;
+$text-secondary-color: #ffffff;
 $background-color-dark: #4e4e4e;
 $background-color-dark-hover: #6e6e6e;
 $background-color-dark-border: #3e3e3e;
@@ -23,6 +24,7 @@ $border-radius: 10px;
 $border-radius-big: 15px;
 
 @import "component";
+@import "component_nav_line";
 
 // Reset All Styles
 * {

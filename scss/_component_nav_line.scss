@@ -1,0 +1,58 @@
+.nav_line {
+  height: 80px;
+  width: 100%;
+  padding: 10px 20px;
+
+  background-image: #{url("/src/img/nav-bar-1.png")};
+  background-size: cover;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+
+  // Template styles
+  border: 3px solid $background-color-dark-border;
+}
+
+.turn_display {
+  color: $text-secondary-color;
+  width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 20px;
+
+  // Template styles
+  border: 2px solid $background-color-dark-border;
+  border-radius: $border-radius;
+  background-color: rgba(0, 0, 0, 0.548);
+  // End of template styles
+}
+
+.counter_turn {
+  color: $text-secondary-color;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 20px;
+}
+
+.btn_next_turn,
+.btn_add_coins,
+.btn_remove_coins {
+  cursor: pointer;
+  border-radius: $border-radius;
+  padding: 10px 15px;
+  background-color: $primary-color;
+  color: $text-secondary-color;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: darken($primary-color, 15%);
+    transform: scale(0.95);
+  }
+}

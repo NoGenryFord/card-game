@@ -207,23 +207,6 @@
   flex-direction: column;
 }
 
-.nav_line {
-  height: 80px;
-  width: 100%;
-  padding: 10px 20px;
-
-  background-image: #{url("/src/img/nav-bar-1.png")};
-  background-size: cover;
-  overflow: hidden;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-
-  // Template styles
-  border: 3px solid $background-color-dark-border;
-}
-
 .main_row {
   height: calc(100%);
   width: 100%;

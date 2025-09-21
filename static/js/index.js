@@ -1,3 +1,9 @@
+// *************************************************************************************
+// START Import module side JS files
+import { NextTurn } from "./turnSystem.js";
+// END Import module side JS files
+// *************************************************************************************
+
 // Loading tamplates
 const templatesStorage = "/templates/cards-template.html";
 const tempatesContainer = document.createElement("div");
@@ -15,6 +21,7 @@ fetch(templatesStorage)
     console.error("Error on coppy tempates", error);
   });
 // End Loading templates
+
 const allTypesOfCards = [
   {
     name: "#cardWarrior",
@@ -203,8 +210,8 @@ if (clearEnemyButton) {
 } else {
   console.warn("clearEnemyButton not found in DOM");
 }
-
-// System select active card
+// *************************************************************************************
+// START System select active card
 let selectedCardElement = null;
 
 function initCardSelection() {
@@ -268,7 +275,16 @@ function clearSelection() {
   }
 }
 
-// Ініціалізація після завантаження DOM
+//Initilization after loading DOM
 document.addEventListener("DOMContentLoaded", () => {
   initCardSelection();
 });
+
+// END System select active card\
+// *************************************************************************************
+
+// *************************************************************************************
+// START Call imported function
+NextTurn();
+// END Call imported function
+// *************************************************************************************
