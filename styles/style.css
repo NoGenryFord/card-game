@@ -367,7 +367,8 @@
 }
 
 .turn_display,
-.music_status {
+.music_status,
+.coins_display {
   color: #ffffff;
   width: 100%;
   display: -webkit-box;
@@ -384,11 +385,20 @@
   background-color: rgba(0, 0, 0, 0.548);
 }
 
+.turn_display {
+  width: 60vw;
+}
+
+.coins_display {
+  width: 35vw;
+}
+
 .music_status {
   width: 5vw;
 }
 
-.counter_turn {
+.counter_turn,
+.counter_coin {
   color: #ffffff;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -399,7 +409,7 @@
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 20px;
+  gap: 5px;
 }
 
 .btn_next_turn,
@@ -446,6 +456,10 @@ body {
   font-family: "NamuTypeface", sans-serif;
   font-size: 18px;
   background-color: #f0f0f0;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 a,

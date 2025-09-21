@@ -1,6 +1,13 @@
 // *************************************************************************************
 // START Import module side JS files
 import { NextTurn } from "./turnSystem.js";
+import {
+  AddCoins,
+  RemoveCoins,
+  TrackUserPurchaseCard,
+  ShowCoins,
+  coins,
+} from "./moneySystem.js";
 import bgMusic from "./musicPlayer.js";
 // END Import module side JS files
 // *************************************************************************************
@@ -32,6 +39,8 @@ const allTypesOfCards = [
     hp: 100,
     damage: 25,
     isActive: false,
+    buyingCost: 3,
+    sellingCost: -2,
   },
   {
     name: "#cardArcher",
@@ -41,6 +50,8 @@ const allTypesOfCards = [
     hp: 80,
     damage: 35,
     isActive: false,
+    buyingCost: 3,
+    sellingCost: -2,
   },
   {
     name: "#cardWizard",
@@ -50,6 +61,8 @@ const allTypesOfCards = [
     hp: 65,
     damage: 45,
     isActive: false,
+    buyingCost: 3,
+    sellingCost: -2,
   },
 ];
 const MAX_CARD = 6;
@@ -152,8 +165,8 @@ console.log("Flag status is: " + isCardLimit);
 
 if (spawnBtn) {
   spawnBtn.addEventListener("click", () => {
-    if (cardsPlayer.length < MAX_CARD) {
-      const selectedCard = chooseRandomCard();
+    const selectedCard = chooseRandomCard();
+    if (cardsPlayer.length < MAX_CARD && coins >= selectedCard.buyingCost) {
       spawnCardTo(selectedCard.name, "playerField");
       updateCardWeight(selectedCard);
 
@@ -162,8 +175,14 @@ if (spawnBtn) {
       console.log(
         "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
       );
-    } else {
-      console.log("Max card on field!");
+      TrackUserPurchaseCard(
+        `Buy: ${selectedCard.name}`,
+        selectedCard.buyingCost
+      );
+    } else if (coins < selectedCard.buyingCost) {
+      console.warn("Not enough coins to buy card");
+    } else if (cardsPlayer.length >= MAX_CARD) {
+      console.warn("Max card on field!");
     }
   });
 } else {
@@ -244,7 +263,7 @@ function handleCardClick(event) {
     }
     return;
   }
-  // If the click is on the already selected card — remove selection
+  // If the click is on the already selected card, remove selection
   if (selectedCardElement === clickedCard) {
     clickedCard.classList.remove("selected");
     selectedCardElement = null;
@@ -287,5 +306,8 @@ document.addEventListener("DOMContentLoaded", () => {
 // *************************************************************************************
 // START Call imported function
 NextTurn();
+AddCoins();
+RemoveCoins();
+ShowCoins();
 // END Call imported function
 // *************************************************************************************

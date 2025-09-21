@@ -38,6 +38,7 @@ body {
   font-family: $font-family-style-1;
   font-size: $font-size-base;
   background-color: $background-color-light;
+  user-select: none;
 }
 a,
 button,
