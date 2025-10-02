@@ -1,22 +1,17 @@
 let coins = 0;
 
 const AddCoins = (addEventListener = true) => {
-  //   let coins = 0;
   const btnAddCoins = document.getElementById("btnAddCoins");
   const coinValue = document.getElementById("coinsValue");
 
   if (btnAddCoins && coinValue) {
     btnAddCoins.addEventListener("click", () => {
-      //   if (btnAddCoins.disabled) {
-      //     return;
-      //   }
       let addRandCoins = Math.round(Math.random() * 10);
       coins += addRandCoins;
-      // coinValue.innerText = coins;
       ShowCoins(coins);
-      return coins;
+      console.log(`Add ${addRandCoins} coins`);
 
-      //   TrackAction("Add Coins", 15);
+      return coins;
     });
   } else {
     console.log("Element not found");
@@ -24,29 +19,31 @@ const AddCoins = (addEventListener = true) => {
 };
 
 const RemoveCoins = (addEventListener = true) => {
-  //   let coins = 0;
   const btnRemoveCoins = document.getElementById("btnRemoveCoins");
   const coinValue = document.getElementById("coinsValue");
 
   if (btnRemoveCoins && coinValue) {
     btnRemoveCoins.addEventListener("click", () => {
-      //   if (btnRemoveCoins.disabled) {
-      //     return;
-      //   }
       let removeRandCoins = Math.round(Math.random() * 10);
       coins -= removeRandCoins;
       if (coins < 0) {
         coins = 0;
       }
-      // coinValue.innerText = coins;
       ShowCoins(coins);
+      console.log(`Remove ${removeRandCoins} coins`);
       return coins;
-
-      //   TrackAction("Remove Coins", 15);
     });
   } else {
     console.log("Element not found");
   }
+};
+
+const addCoinsForTurn = () => {
+  const coinsPerTurn = 10;
+  coins += coinsPerTurn;
+  ShowCoins();
+  console.log(`Add ${coinsPerTurn} on new turn`);
+  return coins;
 };
 
 const TrackUserPurchaseCard = function (userPurchase, cost) {
@@ -69,4 +66,11 @@ const ShowCoins = (actualcoins = coins) => {
 
 // AddCoins();
 // RemoveCoins();
-export { AddCoins, RemoveCoins, TrackUserPurchaseCard, ShowCoins, coins };
+export {
+  AddCoins,
+  RemoveCoins,
+  addCoinsForTurn,
+  TrackUserPurchaseCard,
+  ShowCoins,
+  coins,
+};

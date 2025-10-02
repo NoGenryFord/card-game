@@ -1,26 +1,26 @@
+import { addCoinsForTurn, ShowCoins } from "./moneySystem.js";
+
 //  Initialize function turn system
 const NextTurn = function (addEventListener = true) {
   let turn = 1;
   const btnNextTurn = document.getElementById("btnNextTurn");
   const counterTurnValue = document.getElementById("counterTurnValue");
-  if (btnNextTurn && counterTurnValue) {
+  if (!btnNextTurn && counterTurnValue) {
+    console.log("Element not found");
+  } else {
     btnNextTurn.addEventListener("click", () => {
       turn++;
       counterTurnValue.innerText = turn;
-      //   turnScore = 100;
-      //   ShowTurnScore(turnScore);
-      //   updateBtnState(turnScore);
-      //   console.log(`Turn: ${turn}, Score reset to ${turnScore}`);
+      console.log(`New turn. Tern ${turn}`);
+
+      // Add coins per turn
+      addCoinsForTurn();
+
+      return turn;
     });
-  } else {
-    console.log("Element not found");
   }
 };
 // End Initialize function turn system
-
-// Call function turn system
-// NextTurn();
-// End Call function turn system
 
 // Export functions to main index.js
 export { NextTurn };

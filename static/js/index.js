@@ -4,6 +4,7 @@ import { NextTurn } from "./turnSystem.js";
 import {
   AddCoins,
   RemoveCoins,
+  addCoinsForTurn,
   TrackUserPurchaseCard,
   ShowCoins,
   coins,
@@ -72,8 +73,6 @@ const spawnBtn = document.getElementById("spawnButton");
 const spawnEnemyButton = document.getElementById("spawnEnemyButton");
 const clearPlayerButton = document.getElementById("clearPlayerButton");
 const clearEnemyButton = document.getElementById("clearEnemyButton");
-
-let currentTurn = "";
 
 // 1 card have 1 point base weight. If in array 3 card => sunWeight = 3 , if in array 5 card => sunWeight = 5...
 const totalWeightBase = allTypesOfCards.length;
@@ -305,9 +304,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // *************************************************************************************
 // START Call imported function
-NextTurn();
+let turn = NextTurn();
 AddCoins();
 RemoveCoins();
+addCoinsForTurn();
 ShowCoins();
 // END Call imported function
 // *************************************************************************************
