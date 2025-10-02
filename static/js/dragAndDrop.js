@@ -326,16 +326,4 @@ class DragDropSystem {
   }
 }
 
-// Using the system
-// *******************************************
-// const dragDropSystem = new DragDropSystem();
-
-// Initialization with provided IDs
-// Example
-// dragDropSystem.init(
-//   ["cardDad"], // IDs of elements for drag
-//   ["targetPosition1", "targetPosition2", "targetPositionContainer"] // IDs of target zones
-// );
-// *******************************************
-
 export default DragDropSystem;
