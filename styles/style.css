@@ -15,9 +15,10 @@
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #f0f0f0;
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -59,6 +60,14 @@
   background-color: #6e6e6e;
   cursor: pointer;
 }
+.card_warrior:active {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.card_warrior.returning_to_origin {
+  -webkit-transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
 
 .card_archer {
   width: 175px;
@@ -73,9 +82,10 @@
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #f0f0f0;
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -118,6 +128,14 @@
   background-color: #6e6e6e;
   cursor: pointer;
 }
+.card_archer:active {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.card_archer.returning_to_origin {
+  -webkit-transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+}
 
 .card_wizard {
   width: 175px;
@@ -132,9 +150,10 @@
   border: 2px solid #3e3e3e;
   border-radius: 15px;
   background-color: #f0f0f0;
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
@@ -176,6 +195,14 @@
           transform: translateY(-10px);
   background-color: #6e6e6e;
   cursor: pointer;
+}
+.card_wizard:active {
+  cursor: -webkit-grab;
+  cursor: grab;
+}
+.card_wizard.returning_to_origin {
+  -webkit-transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
 }
 
 .card_warrior.selected,

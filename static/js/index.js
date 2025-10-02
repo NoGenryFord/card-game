@@ -9,6 +9,7 @@ import {
   coins,
 } from "./moneySystem.js";
 import bgMusic from "./musicPlayer.js";
+import DragDropSystem from "./dragAndDrop.js";
 // END Import module side JS files
 // *************************************************************************************
 
@@ -298,6 +299,7 @@ function clearSelection() {
 //Initilization after loading DOM
 document.addEventListener("DOMContentLoaded", () => {
   initCardSelection();
+  initDropSystem();
 });
 
 // END System select active card\
@@ -310,4 +312,51 @@ AddCoins();
 RemoveCoins();
 ShowCoins();
 // END Call imported function
+// *************************************************************************************
+
+// *************************************************************************************
+// START Drag and Drop Integration
+const dragDropSystem = new DragDropSystem();
+function initDropSystem() {
+  dragDropSystem.init(
+    [], // Droppable elements
+    ["playerField", "enemyField"] // Targets
+  );
+  setupCardObserver();
+}
+
+function setupCardObserver() {
+  const playerField = document.getElementById("playerField");
+  const enemyField = document.getElementById("enemyField");
+
+  // Mutation observer for adding new cards
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === 1) {
+          const card =
+            node.querySelector?.(".card_warrior, .card_archer, .card_wizard") ||
+            (node.matches?.(".card_warrior, .card_archer, .card_wizard")
+              ? node
+              : null);
+
+          if (card) {
+            const uniqueId = `card_${Date.now()}_${Math.random()
+              .toString(36)
+              .substr(2, 9)}`;
+            card.id = uniqueId;
+
+            dragDropSystem.addDragElement(card, uniqueId);
+
+            console.log(`Added card ${uniqueId} to drag system`);
+          }
+        }
+      });
+    });
+  });
+
+  // Follow for change in fields
+  if (playerField) observer.observe(playerField, { childList: true });
+  if (enemyField) observer.observe(enemyField, { childList: true });
+}
 // *************************************************************************************

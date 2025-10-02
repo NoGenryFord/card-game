@@ -11,9 +11,10 @@
   border-radius: $border-radius-big;
   background-color: $background-color-light;
 
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
 
   // display: flex;
   // flex-direction: column;
@@ -53,6 +54,15 @@
     background-color: $background-color-dark-hover;
     cursor: pointer;
   }
+
+  &:active {
+    cursor: grab;
+  }
+
+  &.returning_to_origin {
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+      top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  }
 }
 .card_archer {
   width: 175px;
@@ -66,9 +76,10 @@
   border-radius: $border-radius-big;
   background-color: $background-color-light;
 
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
 
   // display: flex;
   // flex-direction: column;
@@ -110,6 +121,15 @@
     background-color: $background-color-dark-hover;
     cursor: pointer;
   }
+
+  &:active {
+    cursor: grab;
+  }
+
+  &.returning_to_origin {
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+      top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+  }
 }
 .card_wizard {
   width: 175px;
@@ -123,9 +143,10 @@
   border-radius: $border-radius-big;
   background-color: $background-color-light;
 
-  position: sticky;
-  right: 0;
-  left: 0;
+  position: relative;
+  right: auto;
+  left: auto;
+  will-change: left, top, transform;
 
   // display: flex;
   // flex-direction: column;
@@ -166,6 +187,15 @@
     transform: translateY(-10px);
     background-color: $background-color-dark-hover;
     cursor: pointer;
+  }
+
+  &:active {
+    cursor: grab;
+  }
+
+  &.returning_to_origin {
+    transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1),
+      top 0.4s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
   }
 }
 
