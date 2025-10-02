@@ -210,6 +210,25 @@
   position: relative;
 }
 
+.sell_card_btn {
+  display: none;
+  position: absolute;
+  cursor: pointer;
+  border-radius: $border-radius;
+  padding: 10px 15px;
+  background-color: $primary-color;
+  color: $text-secondary-color;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  &:hover {
+    background-color: darken($primary-color, 10%);
+    transform: scale(1.05);
+  }
+  &:active {
+    background-color: darken($primary-color, 15%);
+    transform: scale(0.95);
+  }
+}
+
 // Hover for enemy cards - move down
 .enemy_field .card_warrior:hover,
 .enemy_field .card_archer:hover,

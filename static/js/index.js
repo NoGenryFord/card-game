@@ -165,24 +165,41 @@ console.log("Flag status is: " + isCardLimit);
 if (spawnBtn) {
   spawnBtn.addEventListener("click", () => {
     const selectedCard = chooseRandomCard();
-    if (cardsPlayer.length < MAX_CARD && coins >= selectedCard.buyingCost) {
-      spawnCardTo(selectedCard.name, "playerField");
-      updateCardWeight(selectedCard);
 
-      cardsPlayer.push(`${selectedCard.name}`);
-      console.log("Added new card");
-      console.log(
-        "Array player card: " + cardsPlayer + " | Leght: " + cardsPlayer.length
+    if (cardsPlayer.length >= MAX_CARD) {
+      console.warn(
+        "Max card on field! Current:",
+        cardsPlayer.length,
+        "Max:",
+        MAX_CARD
       );
-      TrackUserPurchaseCard(
-        `Buy: ${selectedCard.name}`,
-        selectedCard.buyingCost
-      );
-    } else if (coins < selectedCard.buyingCost) {
-      console.warn("Not enough coins to buy card");
-    } else if (cardsPlayer.length >= MAX_CARD) {
-      console.warn("Max card on field!");
+      return;
     }
+
+    if (coins < selectedCard.buyingCost) {
+      console.warn(
+        "Not enough coins to buy card. Need:",
+        selectedCard.buyingCost,
+        "Have:",
+        coins
+      );
+      return;
+    }
+
+    spawnCardTo(selectedCard.name, "playerField");
+    updateCardWeight(selectedCard);
+
+    cardsPlayer.push(`${selectedCard.name}`);
+    console.log("Added new card");
+    console.log(
+      "Array player card: " +
+        cardsPlayer +
+        " | Length: " +
+        cardsPlayer.length +
+        "/" +
+        MAX_CARD
+    );
+    TrackUserPurchaseCard(`Buy: ${selectedCard.name}`, selectedCard.buyingCost);
   });
 } else {
   console.warn("spawnBtn not found in DOM");
@@ -232,6 +249,7 @@ if (clearEnemyButton) {
 // *************************************************************************************
 // START System select active card
 let selectedCardElement = null;
+const sellBtn = document.getElementById("sellCardButton");
 
 function initCardSelection() {
   const playerField = document.getElementById("playerField");
@@ -246,6 +264,10 @@ function initCardSelection() {
   if (enemyField) {
     enemyField.addEventListener("click", handleCardClick);
   }
+
+  if (sellBtn) {
+    sellBtn.addEventListener("click", handleSellCard);
+  }
 }
 
 function handleCardClick(event) {
@@ -259,6 +281,7 @@ function handleCardClick(event) {
     if (selectedCardElement) {
       selectedCardElement.classList.remove("selected");
       selectedCardElement = null;
+      hideSellButton();
     }
     return;
   }
@@ -266,6 +289,7 @@ function handleCardClick(event) {
   if (selectedCardElement === clickedCard) {
     clickedCard.classList.remove("selected");
     selectedCardElement = null;
+    hideSellButton();
     console.log("Card deselected");
     return;
   }
@@ -278,7 +302,90 @@ function handleCardClick(event) {
   // Set new selection
   selectedCardElement = clickedCard;
   selectedCardElement.classList.add("selected");
+
+  // Show sell button only for player cards
+  const playerField = document.getElementById("playerField");
+  if (playerField && playerField.contains(selectedCardElement)) {
+    showSellButton();
+  } else {
+    hideSellButton();
+  }
+
   console.log("Card selected:", selectedCardElement);
+}
+
+function showSellButton() {
+  if (sellBtn) {
+    sellBtn.style.display = "block";
+    sellBtn.style.position = "absolute";
+    sellBtn.style.zIndex = "1000";
+
+    // Position the button near the selected card
+    const cardRect = selectedCardElement.getBoundingClientRect();
+    const containerRect =
+      selectedCardElement.offsetParent.getBoundingClientRect();
+
+    sellBtn.style.left = `${cardRect.left - containerRect.left}px`;
+    sellBtn.style.top = `${cardRect.bottom - containerRect.top - 25}px`;
+  }
+}
+
+function hideSellButton() {
+  if (sellBtn) {
+    sellBtn.style.display = "none";
+  }
+}
+
+function handleSellCard() {
+  if (!selectedCardElement) return;
+
+  // Determine card type and get its selling cost
+  const cardType = getCardTypeFromElement(selectedCardElement);
+  if (!cardType) {
+    console.log("Unknown card type, cannot sell");
+    return;
+  }
+
+  // Find card data
+  const cardData = allTypesOfCards.find((card) => {
+    const cardName = card.name.replace("#card", "").toLowerCase();
+    return cardName === cardType;
+  });
+
+  if (!cardData) {
+    console.log("Card data not found");
+    return;
+  }
+
+  // Get Sell price
+  const sellPrice = Math.abs(cardData.sellingCost);
+
+  TrackUserPurchaseCard(`Sold ${cardData.name}`, -sellPrice);
+
+  // Delete card from player field
+  const playerField = document.getElementById("playerField");
+  if (playerField && playerField.contains(selectedCardElement)) {
+    // Find index in array cardsPlayer
+    const cardIndex = Array.from(playerField.children).indexOf(
+      selectedCardElement
+    );
+    if (cardIndex !== -1 && cardIndex < cardsPlayer.length) {
+      cardsPlayer.splice(cardIndex, 1);
+    }
+
+    // Delete DOM element
+    selectedCardElement.remove();
+
+    console.log(`Card ${cardData.name} sold for ${sellPrice} coins`);
+    console.log("Remaining player cards:", cardsPlayer.length);
+  }
+}
+
+function getCardTypeFromElement(cardElement) {
+  if (cardElement.classList.contains("card_warrior")) return "warrior";
+  if (cardElement.classList.contains("card_archer")) return "archer";
+  if (cardElement.classList.contains("card_wizard")) return "wizard";
+  return "";
 }
 
 // Function to get the currently selected card
@@ -292,15 +399,16 @@ function clearSelection() {
     selectedCardElement.classList.remove("selected");
     selectedCardElement = null;
   }
+
+  hideSellButton();
 }
+// END System select active card
+// *************************************************************************************
 
 //Initilization after loading DOM
 document.addEventListener("DOMContentLoaded", () => {
   initCardSelection();
 });
-
-// END System select active card\
-// *************************************************************************************
 
 // *************************************************************************************
 // START Call imported function
